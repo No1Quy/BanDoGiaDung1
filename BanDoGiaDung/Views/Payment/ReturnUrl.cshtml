@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Kết quả thanh toán";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container mt-5 text-center">
+    <div class="card shadow-sm p-5">
+        @if (ViewBag.Message.Contains("thành công"))
+        {
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 80px;"></i>
+            <h2 class="text-success fw-bold mt-3">@ViewBag.Message</h2>
+            <p class="fs-5">Mã đơn hàng: <strong>@ViewBag.OrderId</strong></p>
+            <p class="fs-5">Số tiền: <strong>@ViewBag.Amount</strong></p>
+        }
+        else
+        {
+            <i class="bi bi-x-circle-fill text-danger" style="font-size: 80px;"></i>
+            <h2 class="text-danger fw-bold mt-3">@ViewBag.Message</h2>
+        }
+
+        <div class="mt-4">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">
+                <i class="bi bi-house-door me-2"></i>Về trang chủ
+            </a>
+        </div>
+    </div>
+</div>

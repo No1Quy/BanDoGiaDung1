@@ -132,13 +132,23 @@
                 <div><b>Ngày tạo:</b> @Model.create_at.ToString("dd/MM/yyyy")</div>
             </div>
 
-            <button class="add-cart"> 
-                <i class="bi bi-cart me-2"></i> Thêm vào giỏ hàng
-            </button>
-            <a href="@Url.Action("AddToCart", "Cart", new { id = Model.product_id })" 
-   class="btn btn-success btn-lg">
-    <i class="bi bi-cart-plus"></i> Thêm vào giỏ hàng
-</a>
+            @Html.AntiForgeryToken() @{
+                int stock = 0;
+                int.TryParse(Model.quantity, out stock); // Chuyển số lượng tồn kho sang số
+            }
+
+            @if (stock > 0)
+            {
+                <button class="add-cart btn-add-to-cart" data-id="@Model.product_id">
+                    <i class="bi bi-cart me-2"></i> Thêm vào giỏ hàng
+                </button>
+            }
+            else
+            {
+                <button class="add-cart" style="background: gray; cursor: not-allowed;" disabled>
+                    <i class="bi bi-x-circle me-2"></i> Hết hàng
+                </button>
+            }
 
 
             <div class="mt-4">
@@ -165,3 +175,6 @@
         }
     </div>
 </div>
+@section scripts{
+    <script src="~/Scripts/cart-ajax.js"></script>
+}
