@@ -32,7 +32,7 @@ namespace BanDoGiaDung.Controllers
         [HttpPost]
         public async Task<ActionResult> SendMessageToGemini(string userMessage)
         {
-            string apiKey = "AIzaSyA0jR-od0QZEuNP5YjmduLfkviszpWPT6Q";
+            string apiKey = "YOUR_GEMINI_API_KEY";
             string modelName = "gemini-2.5-flash";
             string apiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{modelName}:generateContent?key={apiKey}";
             var products = db.Products

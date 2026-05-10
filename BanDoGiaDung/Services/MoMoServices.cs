@@ -9,8 +9,8 @@ public class MomoService
 {
     private string endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
     private string partnerCode = "MOMO";
-    private string accessKey = "F8BBA842ECF85";
-    private string secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz";
+    private string accessKey = "XXX";
+    private string secretKey = "XXX";
 
     public async Task<string> CreatePaymentAsync(long amount, string orderId, string redirectUrl)
     {
